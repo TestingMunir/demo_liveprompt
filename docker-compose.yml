@@ -7,13 +7,13 @@ services:
       context: .
       dockerfile: Dockerfile.jenkins
     container_name: jenkins-master
-    user: root  # so Jenkins can run Docker commands
+    user: root  # so Jenkins can access Docker
     ports:
       - "8080:8080"     # Jenkins UI
-      - "50000:50000"   # Jenkins agents
+      - "50000:50000"   # For Jenkins agents
     volumes:
       - jenkins_home:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock  # allow access to host Docker
+      - /var/run/docker.sock:/var/run/docker.sock  # allow host Docker access
       - ./shared-workspace:/shared-workspace
     environment:
       - DOCKER_HOST=unix:///var/run/docker.sock
@@ -78,4 +78,6 @@ volumes:
   jenkins_home:
   shared-workspace:
 
-networks
+networks:
+  jenkins-network:
+    driver: bridge

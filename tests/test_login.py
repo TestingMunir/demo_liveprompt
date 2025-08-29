@@ -207,4 +207,50 @@ class Test_Login_page(BaseClass):
             self.log.info("invalid_cred_meassage_ele.text is  %s", invalid_cred_meassage_ele.text)
             assert invalid_cred_meassage_ele.text == "Invalid login credentials"
 
+    def test_invalid_creds_forcefully_fail(self):
+        self.log.info("****** test_invalid_creds ******")
+        login_page = Login_page(self.driver)
+        # precondition homepage
+        try:
+            gethome_page_verification_text = login_page.wait_visibility_of_element_located(
+                seconds=2,
+                locator=Login_page.home_page_verification_text).text
+            self.log.info("****** test_sign_up******")
+            self.log.info("home page verification text is  %s", gethome_page_verification_text)
+            if gethome_page_verification_text == "Your AI Copilot for":
+                self.log.info("****** precondition passed******")
+
+        except:
+            self.go_to_login_page()
+
+        finally:
+            self.log.info("****** Test logic started ******")
+            # test logic
+            login_page.get_element(login_page.log_in).click()
+            log_in_page_header_ele = login_page.wait_visibility_of_element_located(seconds=5,
+                                                                                   locator=(
+                                                                                       Login_page.log_in_page_header))
+            log_in_page_header_text = log_in_page_header_ele.text
+            self.log.info("log_in_page_header_text  is  %s", log_in_page_header_text)
+            data = pd_get_file("./TestData/login_creds.xlsx")
+            login_page.get_button(Login_page.sign_in_with_email).click()
+            login_page.get_button(Login_page.email).send_keys(data["Email"][2])
+            login_page.get_button(Login_page.password).send_keys(data["Passwords"][2])
+            self.log.info(
+                " email: %s | password: %s ",
+                data["Email"][2],
+                data["Passwords"][2],
+            )
+            sign_in_button = login_page.driver.find_element(*Login_page.sign_in)
+
+            # Scroll until the element is visible
+            login_page.driver.execute_script("arguments[0].scrollIntoView(true);", sign_in_button)
+            sign_in_button.click()
+            invalid_cred_meassage_ele = login_page.wait_visibility_of_element_located(seconds=5,
+                                                                                     locator=Login_page.invalid_cred_meassage)
+
+            # assertion
+            self.log.info("invalid_cred_meassage_ele.text is  %s", invalid_cred_meassage_ele.text)
+            assert invalid_cred_meassage_ele.text == "Invalid login credentials fail"
+
 

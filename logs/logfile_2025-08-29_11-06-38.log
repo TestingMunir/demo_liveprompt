@@ -1,0 +1,7 @@
+2025-08-29 11:06:38,712 :INFO : setup_method :****** test_sign_up******
+2025-08-29 11:06:40,897 :INFO : setup_method :****** test_sign_up******
+2025-08-29 11:06:40,898 :INFO : setup_method :home page verification text is  Your AI Copilot for
+2025-08-29 11:06:40,898 :INFO : setup_method :****** precondition passed******
+2025-08-29 11:06:42,423 :INFO : setup_method :log_in_page_header_text  is  Sign in to your account to continue
+2025-08-29 11:06:44,828 :INFO : setup_method : email: mannhite3232@gmail.com | password: 4638143Munir@ 
+2025-08-29 11:06:50,243 :INFO : setup_method :join_meeting_ele.text is  Join Meeting
