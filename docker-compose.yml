@@ -1,14 +1,19 @@
+version: "3.9"
+
 services:
-  # Jenkins Master (official image)
+  # Jenkins Master with Docker CLI
   jenkins:
-    image: jenkins/jenkins:lts
+    build:
+      context: .
+      dockerfile: Dockerfile.jenkins
     container_name: jenkins-master
+    user: root  # so Jenkins can run Docker commands
     ports:
       - "8080:8080"     # Jenkins UI
-      - "50000:50000"   # For Jenkins agents
+      - "50000:50000"   # Jenkins agents
     volumes:
       - jenkins_home:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock  # allow access to host Docker
       - ./shared-workspace:/shared-workspace
     environment:
       - DOCKER_HOST=unix:///var/run/docker.sock
@@ -45,8 +50,6 @@ services:
       - /dev/shm:/dev/shm
     networks:
       - jenkins-network
-    # NOTE: No container_name so scaling works
-    # Scale manually: docker compose up --scale selenium-chrome=2 -d
 
   # Test Automation Service (triggered by Jenkins)
   automation-tests:
@@ -69,12 +72,10 @@ services:
     networks:
       - jenkins-network
     profiles:
-      - testing  # Only start when explicitly called
+      - testing
 
 volumes:
   jenkins_home:
   shared-workspace:
 
-networks:
-  jenkins-network:
-    driver: bridge
+networks
