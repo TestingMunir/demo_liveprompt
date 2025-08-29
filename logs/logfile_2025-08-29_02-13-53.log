@@ -1,0 +1,5 @@
+2025-08-29 02:13:53,717 :INFO : setup_method :****** test_sign_up******
+2025-08-29 02:13:53,975 :INFO : setup_method :****** test_sign_up******
+2025-08-29 02:13:53,977 :INFO : setup_method :home page verification text is  Your AI Copilot for
+2025-08-29 02:13:53,978 :INFO : setup_method :****** precondition passed******
+2025-08-29 02:13:55,228 :INFO : setup_method :log_in_page_header_text  is  Sign in to your account to continue

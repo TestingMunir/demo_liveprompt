@@ -1,0 +1,9 @@
+2025-08-29 01:07:47,264 :INFO : setup_method :****** test_sign_up******
+2025-08-29 01:07:47,595 :INFO : setup_method :****** test_sign_up******
+2025-08-29 01:07:47,595 :INFO : setup_method :home page verification text is  Your AI Copilot for
+2025-08-29 01:07:47,595 :INFO : setup_method :****** precondition passed******
+2025-08-29 01:07:48,685 :INFO : setup_method :create_account_header_text  is  Create your account
+2025-08-29 01:07:49,050 :INFO : setup_method :create_account_header_text  is  Create your account
+2025-08-29 01:07:49,399 :INFO : setup_method :fullname: Jon Doe1 | email: Fakemail@gmail.com | password: Pass123@ | confirm password: Pass123@
+2025-08-29 01:07:51,683 :INFO : setup_method :confirm_your_account_ele_text  is  Check your email to confirm your account
+2025-08-29 01:07:51,734 :INFO : setup_method :****** test_sign_up******
