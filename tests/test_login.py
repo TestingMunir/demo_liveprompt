@@ -254,3 +254,4 @@ class Test_Login_page(BaseClass):
             assert invalid_cred_meassage_ele.text == "Invalid login credentials fail"
 
 
+#added failed testcase
