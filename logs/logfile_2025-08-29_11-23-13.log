@@ -1,0 +1,23 @@
+2025-08-29 11:23:13,626 :INFO : setup_method :****** test_invalid_creds ******
+2025-08-29 11:23:13,626 :INFO : setup_method :****** test_sign_up******
+2025-08-29 11:23:13,626 :INFO : setup_method :****** test_sign_up******
+2025-08-29 11:23:15,903 :INFO : setup_method :****** test_sign_up******
+2025-08-29 11:23:15,903 :INFO : setup_method :home page verification text is  Your AI Copilot for
+2025-08-29 11:23:15,904 :INFO : setup_method :****** precondition passed******
+2025-08-29 11:23:15,904 :INFO : setup_method :****** Test logic started ******
+2025-08-29 11:23:16,217 :INFO : setup_method :****** test_sign_up******
+2025-08-29 11:23:16,217 :INFO : setup_method :home page verification text is  Your AI Copilot for
+2025-08-29 11:23:16,217 :INFO : setup_method :****** precondition passed******
+2025-08-29 11:23:17,081 :INFO : setup_method :log_in_page_header_text  is  Sign in to your account to continue
+2025-08-29 11:23:17,251 :INFO : setup_method :****** test_sign_up******
+2025-08-29 11:23:17,251 :INFO : setup_method :home page verification text is  Your AI Copilot for
+2025-08-29 11:23:17,253 :INFO : setup_method :****** precondition passed******
+2025-08-29 11:23:17,883 :INFO : setup_method :create_account_header_text  is  Create your account
+2025-08-29 11:23:18,294 :INFO : setup_method :log_in_page_header_text  is  Sign in to your account to continue
+2025-08-29 11:23:19,067 :INFO : setup_method :create_account_header_text  is  Create your account
+2025-08-29 11:23:19,350 :INFO : setup_method : email: mannhite3232@gmail.com | password: Pass123@ 
+2025-08-29 11:23:19,517 :INFO : setup_method : email: mannhite3232@gmail.com | password: 4638143Munir@ 
+2025-08-29 11:23:19,941 :INFO : setup_method :fullname: Jon Doe1 | email: Fakemail@gmail.com | password: Pass123@ | confirm password: Pass123@
+2025-08-29 11:23:21,049 :INFO : setup_method :invalid_cred_meassage_ele.text is  Invalid login credentials
+2025-08-29 11:23:22,683 :INFO : setup_method :confirm_your_account_ele_text  is  Check your email to confirm your account
+2025-08-29 11:23:23,633 :INFO : setup_method :join_meeting_ele.text is  Join Meeting
