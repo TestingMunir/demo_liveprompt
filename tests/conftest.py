@@ -42,6 +42,17 @@ def setup(request):
         #option.add_argument('--headless')
         # option.add_argument('--no-sandbox')
         # option.add_argument('--disable-dev-shm-usage')
+
+        #chrome_options.add_argument("--headless")  # Run Chrome in headless mode
+        #chrome_options.add_argument("--disable-gpu")
+        #chrome_options.add_argument("--no-sandbox")
+        3chrome_options.add_argument("--window-size=1920,1080")
+
+        # Connect to Selenium Grid
+        #grid_url = "http://selenium-hub:4444/wd/hub"
+        #driver = webdriver.Remote(
+        #   command_executor=grid_url,
+        #   options=chrome_options
         driver = webdriver.Chrome(options=option)
 
     elif browser_name == "firefox":
