@@ -46,7 +46,7 @@ def setup(request):
         #chrome_options.add_argument("--headless")  # Run Chrome in headless mode
         #chrome_options.add_argument("--disable-gpu")
         #chrome_options.add_argument("--no-sandbox")
-        3chrome_options.add_argument("--window-size=1920,1080")
+        #chrome_options.add_argument("--window-size=1920,1080")
 
         # Connect to Selenium Grid
         #grid_url = "http://selenium-hub:4444/wd/hub"
