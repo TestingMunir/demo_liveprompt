@@ -1,0 +1,80 @@
+services:
+  # Jenkins Master (official image)
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins-master
+    ports:
+      - "8080:8080"     # Jenkins UI
+      - "50000:50000"   # For Jenkins agents
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./shared-workspace:/shared-workspace
+    environment:
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    networks:
+      - jenkins-network
+    restart: unless-stopped
+
+  # Selenium Hub
+  selenium-hub:
+    image: selenium/hub:4.15.0
+    container_name: selenium-hub
+    ports:
+      - "4444:4444"
+      - "4442:4442"
+      - "4443:4443"
+    environment:
+      - GRID_MAX_SESSION=4
+      - GRID_BROWSER_TIMEOUT=60
+      - GRID_TIMEOUT=60
+    networks:
+      - jenkins-network
+
+  # Chrome Node(s)
+  selenium-chrome:
+    image: selenium/node-chrome:4.15.0
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+      - NODE_MAX_INSTANCES=2
+      - NODE_MAX_SESSION=2
+    volumes:
+      - /dev/shm:/dev/shm
+    networks:
+      - jenkins-network
+    # NOTE: No container_name so scaling works
+    # Scale manually: docker compose up --scale selenium-chrome=2 -d
+
+  # Test Automation Service (triggered by Jenkins)
+  automation-tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.automation
+    container_name: automation-tests
+    depends_on:
+      - selenium-hub
+      - selenium-chrome
+    volumes:
+      - ./shared-workspace:/automation
+      - ./reports:/automation/reports
+      - ./logs:/automation/logs
+      - ./screenshots:/automation/screenshots
+    environment:
+      - SELENIUM_HUB_URL=http://selenium-hub:4444/wd/hub
+      - BROWSER_MODE=remote
+      - PYTHONPATH=/automation
+    networks:
+      - jenkins-network
+    profiles:
+      - testing  # Only start when explicitly called
+
+volumes:
+  jenkins_home:
+  shared-workspace:
+
+networks:
+  jenkins-network:
+    driver: bridge
