@@ -1,6 +1,0 @@
-2025-08-28 23:17:45,961 :INFO : test_signup :****** test_sign_up******
-2025-08-28 23:17:45,961 :INFO : test_signup :home page verification text is  Your AI Copilot for
-2025-08-28 23:17:45,961 :INFO : test_signup :****** precondition passed******
-2025-08-28 23:17:47,013 :INFO : test_signup :create_account_header_text  is  Create your account
-2025-08-28 23:17:47,968 :INFO : test_signup :create_account_header_text  is  Create your account
-2025-08-28 23:17:48,517 :INFO : test_signup :fullname: Jon Doe1 | email: Fakemail@gmail.com | password: Pass123@ | confirm password: Pass123@
